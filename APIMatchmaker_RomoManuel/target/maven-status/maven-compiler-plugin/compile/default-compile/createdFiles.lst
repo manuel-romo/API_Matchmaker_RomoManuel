@@ -1,0 +1,4 @@
+api\PerfilesResource.class
+com\apimatchmaker_romomanuel\JakartaRestConfiguration.class
+dtos\ProfileDTO.class
+com\apimatchmaker_romomanuel\resources\JakartaEE10Resource.class
