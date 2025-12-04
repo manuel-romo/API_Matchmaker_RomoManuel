@@ -1,0 +1,7 @@
+entidades\Perfil.class
+entidades\prod\Perfil_.class
+entidades\test\Perfil_.class
+excepciones\PersistenciaException.class
+daos\PerfilesDAO.class
+definiciones\IPerfilesDAO.class
+persistencia\ManejadorConexiones.class

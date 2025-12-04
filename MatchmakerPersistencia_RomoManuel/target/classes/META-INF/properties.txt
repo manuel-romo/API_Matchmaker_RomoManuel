@@ -1,0 +1,11 @@
+# Producción
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU.javax.persistence.jdbc.url=jdbc:mysql://localhost:3306/matchmaker_bd?zeroDateTimeBehavior=CONVERT_TO_NULL
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU.javax.persistence.jdbc.user=root
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU.javax.persistence.jdbc.password=ITSON
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU.javax.persistence.jdbc.driver=com.mysql.cj.jdbc.Driver
+
+# Pruebas
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU_Tests.javax.persistence.jdbc.url=jdbc:mysql://localhost:3306/matchmaker_bd_tests?zeroDateTimeBehavior=CONVERT_TO_NULL
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU_Tests.javax.persistence.jdbc.user=root
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU_Tests.javax.persistence.jdbc.password=mroMSQL1147-
+com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU_Tests.javax.persistence.jdbc.driver=com.mysql.cj.jdbc.Driver

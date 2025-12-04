@@ -1,4 +1,4 @@
-package entidades.prod;
+package entidades.test;
 
 import entidades.Perfil;
 import java.util.Calendar;

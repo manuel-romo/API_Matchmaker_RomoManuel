@@ -36,11 +36,11 @@ public class ManejadorConexiones {
 
         
         if (conexionTest) {
-            prefijo = "equipo04_ecommerce_persistencia_jar_1.0PU_Tests.";
-            nombreUnidad = "equipo04_ecommerce_persistencia_jar_1.0PU_Tests";
+            prefijo = "com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU_Tests.";
+            nombreUnidad = "com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU_Tests";
         } else {
-            prefijo = "equipo04_ecommerce_persistencia_jar_1.0PU.";
-            nombreUnidad = "equipo04_ecommerce_persistencia_jar_1.0PU";
+            prefijo = "com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU.";
+            nombreUnidad = "com_MatchmakerPersistencia_RomoManuel_jar_1.0-SNAPSHOTPU";
         }
 
         for (String key : propiedades.stringPropertyNames()) {

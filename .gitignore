@@ -1,0 +1,11 @@
+/target/
+*.class
+
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+API_Matchmaker_RomoManuel/MatchmakerPersistencia_RomoManuel/src/main/resources/META-INF/properties.txt

@@ -14,7 +14,7 @@
     <class>entidades.Perfil</class>
     <properties>
        <property name="javax.persistence.schema-generation.database.action" value="create"/>
-      <property name="eclipselink.canonicalmodel.subpackage" value="prod"/>
+      <property name="eclipselink.canonicalmodel.subpackage" value="test"/>
     </properties>
   </persistence-unit>
 </persistence>

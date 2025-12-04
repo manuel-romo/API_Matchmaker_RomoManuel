@@ -1,4 +1,6 @@
+fabrica\FabricaDAO.class
 api\PerfilesResource.class
+mapeadores\ProfileMapeador.class
 com\apimatchmaker_romomanuel\JakartaRestConfiguration.class
 dtos\ProfileDTO.class
 com\apimatchmaker_romomanuel\resources\JakartaEE10Resource.class
