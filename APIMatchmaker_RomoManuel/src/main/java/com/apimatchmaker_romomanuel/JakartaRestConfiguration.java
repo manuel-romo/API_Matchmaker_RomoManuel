@@ -7,14 +7,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Configures Jakarta RESTful Web Services for the application.
+ * Configura Servicios RESTful Web de Jakarta para la aplicación.
+ * 
  * @author Romo López Manuel
  * ID: 00000253080
+ * 
  */
 
 @ApplicationPath("/api")
 public class JakartaRestConfiguration extends Application {
     
+    /**
+     * Permite obtener el conjunto de clases que contienen los recursos expuestos por
+     * la API.
+     * @return Un conjunto con las clases que el servidor debe cargar e instanciar.
+     */
     @Override
     public Set<Class<?>> getClasses() {
         

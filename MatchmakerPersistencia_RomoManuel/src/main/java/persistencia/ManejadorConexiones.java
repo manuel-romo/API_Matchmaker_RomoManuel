@@ -12,12 +12,27 @@ import javax.persistence.Persistence;
  *
  * @author Romo López Manuel
  * ID: 00000253080
+ * 
+ * Clase que crea una instancia de EntityManager para manipular la base de datos, 
+ * pudiendo configurarla para hacer pruebas o no.
+ * 
  */
 public class ManejadorConexiones {
+    
+    /**
+     * Fábrica de EntityManager.
+     */
     private static EntityManagerFactory emFactory;
     
+    /**
+     * Dato booleano que determina si la conexión a usar es de pruebas o no.
+     */
     private static boolean conexionTest = true; 
 
+    /**
+     * Permite inicializar la conexión con la base de datos y crear la fábrica de
+     * EntityManager.
+     */
     private static void inicializarFactory() {
         Properties propiedades = new Properties();
         
@@ -55,6 +70,10 @@ public class ManejadorConexiones {
 
     }
 
+    /**
+     * Permite obtener el EntityManger actual, usando un patrón singleton.
+     * @return Objeto EntityManager que permite manipular la base de datos.
+     */
     public static EntityManager getEntityManager() {
 
         if (emFactory == null || !emFactory.isOpen()) {

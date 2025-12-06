@@ -7,7 +7,6 @@ import excepciones.PersistenciaException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,14 +15,25 @@ import persistencia.ManejadorConexiones;
 
 /**
  *
+ * Clase que implementa la interfaz {@IPerfilesDAO}, permite realizar operaciones
+ * sobre la base de datos, específicamente sobre la entidad Perfil.
+ * 
  * @author Romo López Manuel
  * ID: 00000253080
  * 
  */
 public class PerfilesDAO implements IPerfilesDAO{
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Perfil registrarPerfil(Perfil nuevoPerfil) throws PersistenciaException{
+        
+        // Se valida que el nuevo perfil no sea nulo.
+        if(nuevoPerfil == null){
+            throw new PersistenciaException("El perfil que se intentó registrar es nulo."); 
+        }
         
         // Se valida que el perfil contenga todos los datos obligatorios.
         if (nuevoPerfil.getNombre() == null || 
@@ -99,6 +109,9 @@ public class PerfilesDAO implements IPerfilesDAO{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Perfil> obtenerPerfilesEdad(int edad) {
         
@@ -132,11 +145,15 @@ public class PerfilesDAO implements IPerfilesDAO{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Perfil> obtenerPerfilesPais(String pais) throws PersistenciaException{
         
         // Se valida que el parámetro pais no sea nulo.
-        if (pais == null) {
-            throw new PersistenciaException("El criterio de búsqueda por país no puede ser nulo.");
+        if (pais == null || pais.isEmpty()) {
+            throw new PersistenciaException("El país recibido para la consulta no puede ser nulo ni estar vacío.");
         }
         
         // Se crea el objeto EntityManager.
@@ -169,12 +186,15 @@ public class PerfilesDAO implements IPerfilesDAO{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Perfil> obtenerPerfilesGenero(String genero) throws PersistenciaException {
         
         // Se valida que el parámetro genero no sea nulo.
-        if (genero == null) {
-            throw new PersistenciaException("El criterio de búsqueda por género no puede ser nulo.");
+        if (genero == null || genero.isEmpty()) {
+            throw new PersistenciaException("El género recibido para la consulta no puede ser nulo ni estar vacío.");
         }
         
         // Se crea el objeto EntityManager.

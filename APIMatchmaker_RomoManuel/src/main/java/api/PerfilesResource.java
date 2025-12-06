@@ -6,43 +6,38 @@ import dtos.ProfileDTO;
 import entidades.Perfil;
 import excepciones.PersistenciaException;
 import fabrica.FabricaDAO;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.UriInfo;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import mapeadores.ProfileMapeador;
 
 /**
- * REST Web Service
+ * Servicio REST Web.
  *
  * @author Romo López Manuel
  * ID: 00000253080
+ * 
  */
-@Path("perfiles")
+@Path("/perfiles")
 @RequestScoped
 public class PerfilesResource {
 
     private IPerfilesDAO perfilesDAO;
-    
-    @Context
-    private UriInfo context;
 
     /**
-     * Creates a new instance of PerfilesResource
+     * Constructor de la clase.
      */
     public PerfilesResource() {
-        
+        // Se obtiene la fábrica de perfilesDAO para obtener un objeto que implementa
+        // la interfaz IPerfilesDAO.
         this.perfilesDAO = FabricaDAO.obtenerPerfilesDAO();
         
     }
@@ -57,6 +52,8 @@ public class PerfilesResource {
      * en la búsqueda, se obtiene sólo un perfil al azar si se reciben dos o más
      * criterios y si esos coincidenc on dos o más perfiles.
      */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<ProfileDTO> obtenerPerfiles(
             @QueryParam("pais") String pais, 
             @QueryParam("edad") Integer edad, 
@@ -64,7 +61,7 @@ public class PerfilesResource {
         
         try {
             // Lista para guardar los perfiles coincidentes.
-            List<Perfil> perfiles = new LinkedList<>();
+            List<Perfil> perfiles = new ArrayList<>();
             boolean consultaRealizada = false;
 
             // Si se especificó un país, se obtienen los perfiles que tienen ese país. 
@@ -82,7 +79,7 @@ public class PerfilesResource {
                 } else {
                     // Si ya se habían obtenido perfiles, se obtienen sólo los que
                     // también cumplan con la edad indicada.
-                    List<Perfil> listaAuxiliar = new LinkedList<>();
+                    List<Perfil> listaAuxiliar = new ArrayList<>();
                     
                     for (Perfil perfil : perfiles) {
                         if (perfil.getEdad() == edad) {
@@ -105,7 +102,7 @@ public class PerfilesResource {
                 } else {
                     // Si ya se habían obtenido perfiles, se obtienen sólo los que
                     // también cumplan con el género indicado.
-                    List<Perfil> listaAuxiliar = new LinkedList<>();
+                    List<Perfil> listaAuxiliar = new ArrayList<>();
                     
                     for (Perfil perfil: perfiles) {
                         if (perfil.getGenero().equalsIgnoreCase(genero)) {
@@ -119,7 +116,7 @@ public class PerfilesResource {
             
             // Si no hay resultados, se devuelve nulo.
             if (perfiles.isEmpty()) {
-                return null;
+                return new ArrayList<>();
             }
             
             // Se cuenta la cantidad de criterios enviados por el usuario.
@@ -144,13 +141,13 @@ public class PerfilesResource {
                 int indice = random.nextInt(perfiles.size());
                 Perfil perfilRandom = perfiles.get(indice);
 
-                LinkedList<ProfileDTO> listaPerfilRandom = new LinkedList<>();
+                ArrayList<ProfileDTO> listaPerfilRandom = new ArrayList<>();
                 listaPerfilRandom.add(ProfileMapeador.toDTO(perfilRandom));
                 return listaPerfilRandom;
             }
 
             // Si hay sólo un resultado o se cumplió con sólo 1 requisito enviado, se devuelve la lista completa.
-            List<ProfileDTO> perfilesResultado = new LinkedList<>();
+            List<ProfileDTO> perfilesResultado = new ArrayList<>();
             
             for (Perfil perfil : perfiles) {
                 perfilesResultado.add(ProfileMapeador.toDTO(perfil));
